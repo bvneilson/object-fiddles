@@ -243,7 +243,7 @@ methodCollection.logHello();
 
   //Code Here
 var MakePerson = function(name, birthday, ssn){
-  return me = {
+  return {
     name: name,
     birthday: birthday,
     ssn: ssn,
@@ -271,7 +271,7 @@ console.log(MakePerson);
     }
   }
 
-  creditCard = MakeCard();
+  creditCard = MakeCard(2341234123, 'Brennan V. Neilson', 234, '2/24/95');
 
   creditCard
   
@@ -286,5 +286,34 @@ console.log(MakePerson);
 */
 
   //Code Here
+var MakePerson = function(name, birthday, ssn){
+  return {
+    name: name,
+    birthday: birthday,
+    ssn: ssn,
+  }
+}
+ var MakeCard = function(ccNumber, ccName, ccSecurityCode, ccExpiration){
+    return {
+      ccNumber: ccNumber,
+      ccName: ccName,
+      ccSecurityCode: ccSecurityCode,
+      ccExpiration: ccExpiration,
+    }
+  }
+  var person = MakePerson('Brennan', '1/19/93', 545453);
+  var creditCard = MakeCard(2341234123, 'Brennan V. Neilson', 234, '2/24/95');
 
+  var bindCard = function(MakePerson, MakeCard){
+  var newObj = {};
+  for (var key in MakePerson){
+    newObj[key] = MakePerson[key];
+  }
+  for (var key in MakeCard){
+    newObj[key] = MakeCard[key];
+  }
+  return newObj;
+}
+
+bindCard(person, creditCard);
 
